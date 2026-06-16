@@ -8,7 +8,7 @@ echo " Starting cleanup process  ... "
         rm -rf "$cows"
         echo "Partial data saved and removed"
         fi
-       
+	exit 1       
 }
 trap abort  SIGINT
 
@@ -127,7 +127,8 @@ if [ "$choice" = "y" ]; then
         sed -i "s/75/$warning/" "$cows/Helpers/config.json"
         sed -i "s/50/$failure/" "$cows/Helpers/config.json"
         echo "Threshold modified"
+	exit 1
 fi
 
 echo " delypoment  $cows  successfully "
-
+exit 0
